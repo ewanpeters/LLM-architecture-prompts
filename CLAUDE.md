@@ -6,7 +6,21 @@ Markdown-only prompt library: no code, build, tests or tooling. See [README.md](
 
 - `prompts/NN-name.md` pairs 1:1 with `examples/NN-name-sample.md`.
 - `NN` follows the workflow order: 01 Requirements Capture → 02 Options Analysis → 03 ADR → 04 Solution Design Doc.
-- `.claude/skills/<name>/SKILL.md` holds shared Claude Code skills (currently `arch-analysis`). Each file needs `---`-delimited frontmatter with `name` and `description`, and the file name must be uppercase `SKILL.md`. Unlike the prompts, skills are Claude Code-specific, so the provider-agnostic rule doesn't apply to them.
+- `.claude/skills/<name>/SKILL.md` holds shared Claude Code skills. Each file needs `---`-delimited frontmatter with `name` and `description`, and the file name must be uppercase `SKILL.md`. Unlike the prompts, skills are Claude Code-specific, so the provider-agnostic rule doesn't apply to them.
+- `standards/review-questions.md` holds the team's review questions, used by `review-standards`.
+- `docs/adr/` and `docs/hld/` are where `create-adr` and `create-hld` save the documents they generate.
+
+## Skills and what they depend on
+
+| Skill | Depends on |
+|---|---|
+| `arch-analysis` | none (its Mermaid conventions are reused by `create-hld`) |
+| `create-adr` | `prompts/03-architecture-decision-record.md`, `examples/03-...` |
+| `create-hld` | `prompts/04-solution-design-doc.md`, `examples/04-...`, `arch-analysis` |
+| `review-requirements` | `prompts/01-requirements-capture.md` (requirements format) |
+| `review-standards` | `standards/review-questions.md` (`[ADR]`/`[HLD]`/`[Both]` and `[EXAMPLE]` tags) |
+
+The create skills read their prompt at run time, so changing a prompt's sections changes the generated docs. When you rename a prompt or change its format, update the skills that depend on it.
 
 ## Prompt file format
 

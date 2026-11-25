@@ -22,11 +22,24 @@ prompts/
   03-architecture-decision-record.md  Record the chosen option as a formal ADR
   04-solution-design-doc.md           Write the full solution architecture doc
 examples/                             Worked sample output for each prompt
-.claude/skills/
-  arch-analysis/SKILL.md              Claude Code skill: analyse an architecture and draw a diagram
+standards/
+  review-questions.md                 Your team's standard review questions
+.claude/skills/                       Claude Code skills (see below)
 ```
 
-If you use Claude Code in this repo, the `arch-analysis` skill loads automatically. Run it with `/arch-analysis`, or ask Claude to "analyse my architecture".
+## Claude Code skills
+
+If you use Claude Code in this repo, these skills load automatically. Run them with `/<name>`, or just describe the task.
+
+| Skill | What it does | Example |
+|---|---|---|
+| `arch-analysis` | Analyses an architecture and draws a Mermaid diagram | `/arch-analysis` on a codebase |
+| `create-adr` | Writes a numbered ADR to `docs/adr/` using the ADR prompt | `/create-adr We chose real-time aggregation over nightly batch` |
+| `create-hld` | Writes a high-level design doc to `docs/hld/` using the design doc prompt | `/create-hld for the order-history service, audience: engineers` |
+| `review-requirements` | Checks an ADR or HLD against requirements, one requirement at a time | `/review-requirements docs/hld/order-history.md against requirements.md` |
+| `review-standards` | Checks an ADR or HLD against `standards/review-questions.md` | `/review-standards docs/adr/ADR-001-...md` |
+
+Fill in `standards/review-questions.md` with your own questions before using `review-standards`. Until then, it only contains example questions and the skill won't run.
 
 ## How to use a prompt
 
