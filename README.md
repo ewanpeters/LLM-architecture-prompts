@@ -21,7 +21,12 @@ prompts/
   02-options-analysis.md              Generate and compare solution options
   03-architecture-decision-record.md  Record the chosen option as a formal ADR
   04-solution-design-doc.md           Write the full solution architecture doc
+examples/                             Worked sample output for each prompt
+.claude/skills/
+  arch-analysis/SKILL.md              Claude Code skill: analyse an architecture and draw a diagram
 ```
+
+If you use Claude Code in this repo, the `arch-analysis` skill loads automatically. Run it with `/arch-analysis`, or ask Claude to "analyse my architecture".
 
 ## How to use a prompt
 

@@ -6,6 +6,7 @@ Markdown-only prompt library: no code, build, tests or tooling. See [README.md](
 
 - `prompts/NN-name.md` pairs 1:1 with `examples/NN-name-sample.md`.
 - `NN` follows the workflow order: 01 Requirements Capture → 02 Options Analysis → 03 ADR → 04 Solution Design Doc.
+- `.claude/skills/<name>/SKILL.md` holds shared Claude Code skills (currently `arch-analysis`). Each file needs `---`-delimited frontmatter with `name` and `description`, and the file name must be uppercase `SKILL.md`. Unlike the prompts, skills are Claude Code-specific, so the provider-agnostic rule doesn't apply to them.
 
 ## Prompt file format
 
